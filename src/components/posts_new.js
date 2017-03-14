@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {reduxForm} from 'redux-form';
+import {createPost} from '../actions/index';
 
 class PostsNew extends Component {
   render() {
     const {fields: {title, categories, content}, handleSubmit} = this.props; //Sintaxe ES6
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(this.props.createPost)}>
         <h3>Criar novo Post</h3>
 
         <div className="form-group">
@@ -30,11 +31,14 @@ class PostsNew extends Component {
   }
 }
 
-//Aqui é passada a configuração do form para o ReduxForm
+//Aqui é passada a configuração do form para o ReduxForm, tem o mesmo comportamento
+//do connect do React.
+//connect: primeiro argumento é o mapStateToProps, segundo é o mapDispatchToProps
+//redurForm: primeiro é configuração do form, depois os do connect
 export default reduxForm({
   form: 'PostsNewForm', //não precisa ser o mesmo nome do componente, mas tem de ser único
   fields: ['title', 'categories', 'content']
-})(PostsNew);
+}, null, {createPost})(PostsNew);
 
 //Anotação apenas para registro. O que o ReduxForm faz é criar a seguinte
 //estrutura dentro do Estado da aplicação
