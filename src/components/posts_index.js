@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchPosts} from '../actions/index';
+import {Link} from 'react-router';
 
 class PostsIndex extends Component {
   //Método do ciclo de vida do componente,
@@ -11,7 +12,14 @@ class PostsIndex extends Component {
 
   render() {
     return (
-      <div>Lista de posts do blog</div>
+      <div>
+        <div className="text-xs-right">
+          <Link to="/posts/new" className="btn btn-primary">
+            Adicionar Postagem
+          </Link>
+        </div>
+        Lista de posts do blog
+      </div>
     );
   }
 }
