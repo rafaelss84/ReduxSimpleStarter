@@ -64,7 +64,7 @@ function validate(values) {
 //Aqui é passada a configuração do form para o ReduxForm, tem o mesmo comportamento
 //do connect do React.
 //connect: primeiro argumento é o mapStateToProps, segundo é o mapDispatchToProps
-//redurForm: primeiro é configuração do form, depois os do connect
+//reduxForm: primeiro é configuração do form, depois os do connect
 export default reduxForm({
   form: 'PostsNewForm', //não precisa ser o mesmo nome do componente, mas tem de ser único
   fields: ['title', 'categories', 'content'],
@@ -72,14 +72,14 @@ export default reduxForm({
 }, null, {createPost})(PostsNew);
 
 //Anotação apenas para registro. O que o ReduxForm faz é criar a seguinte
-//estrutura dentro do Estado da aplicação
+//estrutura (neste exemplo) dentro do Estado da aplicação
 /*
 state === {
   form: {
     PostsNewForm: { //Por isso o nome do form tem de ser único
-      title: 'dados inseridos pelo usuario',
-      categories: 'dados inseridos pelo usuario'
-      content: 'dados inseridos pelo usuario'
+      title: 'campo do form com dados inseridos pelo usuario',
+      categories: 'campo do form com dados inseridos pelo usuario'
+      content: 'campo do form com dados inseridos pelo usuario'
     }
   }
 }
